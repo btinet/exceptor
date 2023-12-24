@@ -5,6 +5,7 @@
  */
 
 import core.Bootstrap;
+import core.ExceptionDialog;
 
 import javax.swing.*;
 
@@ -12,14 +13,15 @@ public class Main {
     public static void main(String[] args) {
 
         try {
+            /*
+            Innerhalb try-Block Anwendung initialisieren und damit alle auftretenden Fehler abfangen.
+             */
             new Bootstrap();
         } catch (Exception exception) {
-            JOptionPane.showMessageDialog(
-                    new JFrame(),
-                    exception.getClass().getSimpleName() + " in " + exception.getStackTrace()[0],
-                    "Es ist ein Fehler aufgetreten",
-                    JOptionPane.ERROR_MESSAGE
-            );
+            /*
+            Aufgetretene Fehler in einem Dialogfenster ausgeben.
+             */
+            new ExceptionDialog(exception);
         }
 
     }
