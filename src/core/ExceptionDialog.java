@@ -13,14 +13,14 @@ public class ExceptionDialog {
 
     /**
      *
-     * @param exception aufgefangene Exception-Instanz. Differenzierung nach bestimmten Exceptions implementierbar.
+     * @param exception aufgefangene Exception-Instanz.
      */
     public ExceptionDialog(Exception exception) {
 
         JOptionPane.showMessageDialog(
                 new JFrame(),
-                exception.getClass().getSimpleName() + " in " + exception.getStackTrace()[0],
-                "Es ist ein Fehler aufgetreten",
+                exception.getClass().getSimpleName() + " in " + exception.getStackTrace()[0].getClassName() + " in Zeile " + exception.getStackTrace()[0].getLineNumber() + " aufgetreten.",
+                "Eine Ausnahme wurde abgefangen",
                 JOptionPane.ERROR_MESSAGE
         );
     }
