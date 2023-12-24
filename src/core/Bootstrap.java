@@ -1,7 +1,10 @@
+/*
+ * Copyright (c) 2023 Benjamin Wagner
+ */
+
 package core;
 
 import javax.swing.*;
-import java.util.ArrayList;
 
 public class Bootstrap extends JFrame {
 

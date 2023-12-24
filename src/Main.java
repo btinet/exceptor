@@ -1,3 +1,9 @@
+
+
+/*
+ * Copyright (c) 2023 Benjamin Wagner
+ */
+
 import core.Bootstrap;
 
 import javax.swing.*;
