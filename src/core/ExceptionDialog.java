@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2023 Benjamin Wagner
+ */
+
 package core;
 
 import javax.swing.*;
