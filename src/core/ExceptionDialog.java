@@ -15,11 +15,18 @@ public class ExceptionDialog {
      *
      * @param exception aufgefangene Exception-Instanz.
      */
-    public ExceptionDialog(Exception exception) {
-
+    public ExceptionDialog(Throwable exception) {
+        // Meldung bauen
+        String message = exception.getClass().getSimpleName() +
+                " in " + exception.getStackTrace()[0].getClassName() +
+                " in Zeile " + exception.getStackTrace()[0].getLineNumber() +
+                " aufgetreten.";
+        // Meldung loggen
+        if (ExceptionHandler.DEV) ExceptionHandler.LOGGER.warn(message);
+        // Dialogfenster anzeigen
         JOptionPane.showMessageDialog(
                 new JFrame(),
-                exception.getClass().getSimpleName() + " in " + exception.getStackTrace()[0].getClassName() + " in Zeile " + exception.getStackTrace()[0].getLineNumber() + " aufgetreten.",
+                message,
                 "Eine Ausnahme wurde abgefangen",
                 JOptionPane.ERROR_MESSAGE
         );

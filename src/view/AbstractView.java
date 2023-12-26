@@ -5,6 +5,8 @@
 package view;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import java.awt.*;
 
 public abstract class AbstractView extends JPanel {
 
@@ -12,6 +14,13 @@ public abstract class AbstractView extends JPanel {
 
     public AbstractView(JFrame frame) {
         this.frame = frame;
+        setBorder(new EmptyBorder(5,5,5,5));
+        setLayout(new BorderLayout());
+
+    }
+
+    public JFrame getFrame() {
+        return frame;
     }
 
 }

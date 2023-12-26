@@ -7,11 +7,10 @@ package core;
 import view.MainView;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class Bootstrap extends JFrame {
 
-    public Bootstrap() throws Exception {
+    public Bootstrap() {
         init();
         run();
     }
@@ -19,7 +18,7 @@ public class Bootstrap extends JFrame {
     /**
      * Fenster vorbereiten
      */
-    private void init() throws Exception {
+    private void init() {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setContentPane(new MainView(this));
         setSize(800,600);
@@ -31,7 +30,7 @@ public class Bootstrap extends JFrame {
      * Eigentliche Anwendung starten. Fehler können jederzeit gezielt per throw ausgegeben werden.
      */
     private void run() {
-        System.out.println("Anwendung gestartet");
+        if (ExceptionHandler.DEV) ExceptionHandler.LOGGER.warn("Anwendung gestartet");
     }
 
 }

@@ -5,35 +5,55 @@
 package view;
 
 import core.AuthenticationException;
-import core.ExceptionDialog;
 import core.UserNotFoundException;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class MainView extends AbstractView {
 
     static Integer index = 0;
-    private final JButton testButton = new JButton("Test");
-    private final JLabel testLabel = new JLabel();
-    private final JLabel indexLabel = new JLabel("Index: " + index);
+    final static String BUTTON_PANEL = "Card with JButtons";
+    final static String TEXT_PANEL = "Card with JTextField";
+
+    JPanel comboBoxPane = new JPanel();
+    String[] comboBoxItems = { BUTTON_PANEL, TEXT_PANEL };
+    JComboBox<String> cb = new JComboBox<>(comboBoxItems);
+    JPanel cards;
+    private final JLabel testLabel = new JLabel("TestLabel");
+
     public MainView(JFrame frame) {
         super(frame);
 
-        testButton.addActionListener(e -> {
-            try {
-                onClick();
-            } catch (Exception ex) {
-                testLabel.setText("Fach ist leer");
-                new ExceptionDialog(ex);
-            } finally {
-                index++;
-                indexLabel.setText("Index: " + index);
-            }
+        cb.setEditable(false);
+        cb.addItemListener(e -> {
+            CardLayout cl = (CardLayout)(cards.getLayout());
+            cl.show(cards, (String)e.getItem());
         });
 
-        add(testButton);
-        add(testLabel);
-        add(indexLabel);
+
+        comboBoxPane.add(cb);
+
+        JButton testButton = new JButton("Test");
+        testButton.addActionListener(e -> onClick());
+
+        add(comboBoxPane, BorderLayout.PAGE_START);
+
+        JLabel indexLabel = new JLabel("Index: " + index);
+
+
+        JPanel card1 = new JPanel();
+        card1.add(new JButton("A"));
+        card1.add(new JButton("B"));
+        card1.add(new JButton("C"));
+        card1.add(testButton);
+        JPanel card2 = new JPanel();
+        card2.add(indexLabel,BorderLayout.CENTER);
+
+        cards = new JPanel(new CardLayout());
+        cards.add(card1, BUTTON_PANEL);
+        cards.add(card2, TEXT_PANEL);
+        add(cards,BorderLayout.CENTER);
     }
 
     public void onClick() {
