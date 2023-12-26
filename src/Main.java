@@ -9,16 +9,10 @@ import javax.swing.*;
 
 public class Main {
     public static void main(String[] args) throws UnsupportedLookAndFeelException, ClassNotFoundException, InstantiationException, IllegalAccessException {
-
         Thread.setDefaultUncaughtExceptionHandler(new ExceptionHandler());
-
         // ExceptionHandler.DEV = true;
-        UIManager.setLookAndFeel(
-                UIManager.getSystemLookAndFeelClassName()
-        );
-
+        UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         javax.swing.SwingUtilities.invokeLater(Bootstrap::new);
-
     }
 
 }

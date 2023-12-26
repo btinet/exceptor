@@ -20,9 +20,9 @@ public class Bootstrap extends JFrame {
      */
     private void initWindow() {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
         setContentPane(new MainView(this));
         setSize(800,600);
-        pack();
         setLocationRelativeTo(null);
         setVisible(true);
     }
