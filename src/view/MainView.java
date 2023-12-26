@@ -4,7 +4,8 @@
 
 package view;
 
-import core.AuthenticationException;
+
+import core.ExceptionDialog;
 import core.UserNotFoundException;
 
 import javax.swing.*;
@@ -39,16 +40,13 @@ public class MainView extends AbstractView {
 
         add(comboBoxPane, BorderLayout.PAGE_START);
 
-        JLabel indexLabel = new JLabel("Index: " + index);
-
-
         JPanel card1 = new JPanel();
         card1.add(new JButton("A"));
         card1.add(new JButton("B"));
         card1.add(new JButton("C"));
         card1.add(testButton);
         JPanel card2 = new JPanel();
-        card2.add(indexLabel,BorderLayout.CENTER);
+        card2.add(testLabel,BorderLayout.CENTER);
 
         cards = new JPanel(new CardLayout());
         cards.add(card1, BUTTON_PANEL);
@@ -59,10 +57,11 @@ public class MainView extends AbstractView {
     public void onClick() {
         Integer[] numbers = new Integer[5];
         numbers[4] = 5;
+        index++;
+        testLabel.setText("Fach ist " + numbers[index]);
 
         if (null == numbers[index]) throw new UserNotFoundException();
-        if (5 == numbers[index]) throw new AuthenticationException();
+        if (5 == numbers[index]) new ExceptionDialog("Login erfolgreich", JOptionPane.INFORMATION_MESSAGE);
 
-        testLabel.setText("Fach ist " + numbers[index]);
     }
 }

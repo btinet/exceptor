@@ -16,7 +16,6 @@ public abstract class AbstractView extends JPanel {
         this.frame = frame;
         setBorder(new EmptyBorder(5,5,5,5));
         setLayout(new BorderLayout());
-
     }
 
     public JFrame getFrame() {
